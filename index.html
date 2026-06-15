@@ -110,6 +110,7 @@
         <div class="store"><h4>Пилот Маркет</h4><p>Сухумское шоссе, 110А</p></div>
         <div class="store"><h4>Пилот Маркет</h4><p>ул. Волгоградская, 105</p></div>
       </div>
+      <div id="mapwrap" class="mapwrap" style="display:none"><div id="map"></div></div>
       <a href="https://pilot23.ru" target="_blank" rel="noopener" class="btn btn-primary">Каталог и заказ — pilot23.ru</a>
     </div>
   </section>
@@ -148,6 +149,45 @@
     addEventListener('scroll',()=>{const y=scrollY;if(y<innerHeight){
       bg.style.transform='translateY('+(y*0.15)+'px)';
       bottle.style.transform='translateY('+(y*-0.06)+'px)';}},{passive:true});
+
+    // ---- Yandex Map (v3, тёмная тема). Вставить ключ в YMAP_KEY, чтобы включить. ----
+    const YMAP_KEY=''; // <-- сюда API-ключ Яндекс.Карт (JS API v3 + Геокодер)
+    const STORE_ADDRESSES=[
+      'Сочи, ул. Бориса Голицына, 1',
+      'Сочи, ул. Шоссейная, 89',
+      'Сочи, Сухумское шоссе, 110А',
+      'Сочи, ул. Волгоградская, 105'
+    ];
+    if(YMAP_KEY){
+      document.getElementById('mapwrap').style.display='block';
+      const s=document.createElement('script');
+      s.src='https://api-maps.yandex.ru/v3/?apikey='+YMAP_KEY+'&lang=ru_RU';
+      s.onload=initYMap; document.head.appendChild(s);
+    }
+    async function initYMap(){
+      await ymaps3.ready;
+      const {YMap,YMapDefaultSchemeLayer,YMapDefaultFeaturesLayer,YMapMarker,YMapControls}=ymaps3;
+      const map=new YMap(document.getElementById('map'),
+        {location:{center:[39.72,43.60],zoom:11},theme:'dark'});
+      map.addChild(new YMapDefaultSchemeLayer());
+      map.addChild(new YMapDefaultFeaturesLayer());
+      const pts=[];
+      for(const addr of STORE_ADDRESSES){
+        try{
+          const res=await ymaps3.search({text:addr});
+          if(res&&res[0]&&res[0].geometry){
+            const c=res[0].geometry.coordinates;pts.push(c);
+            const el=document.createElement('div');el.className='ymark';el.title=addr;
+            map.addChild(new YMapMarker({coordinates:c},el));
+          }
+        }catch(e){console.warn('geocode failed',addr,e);}
+      }
+      if(pts.length){
+        const lons=pts.map(p=>p[0]),lats=pts.map(p=>p[1]);
+        map.update({location:{center:[(Math.min(...lons)+Math.max(...lons))/2,
+          (Math.min(...lats)+Math.max(...lats))/2],zoom:11}});
+      }
+    }
   </script>
 </body>
 </html>

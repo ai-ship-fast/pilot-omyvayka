@@ -205,6 +205,14 @@ footer a:hover{color:var(--blue)}
 .store p{color:var(--muted);font-size:14px;margin-top:6px}
 .store .ph{color:var(--blue);font-weight:700;margin-top:8px;display:inline-block}
 
+/* Yandex map */
+.mapwrap{margin:6px 0 28px;border-radius:16px;overflow:hidden;border:1px solid rgba(31,162,255,.25);
+  box-shadow:0 0 50px rgba(31,162,255,.12)}
+#map{width:100%;height:420px}
+.ymark{width:18px;height:18px;border-radius:50%;background:var(--blue);border:3px solid #fff;
+  box-shadow:0 0 14px var(--blue);transform:translate(-50%,-50%);cursor:pointer}
+@media(max-width:720px){#map{height:320px}}
+
 /* sticky mobile CTA */
 .sticky-cta{display:none}
 
