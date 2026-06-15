@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ПИЛОТ — Концепт 4 (гибридный hero)</title>
+<link rel="stylesheet" href="css/style.css" />
+<style>
+  /* Concept 4: scroll-driven hybrid hero.
+     Phase 1 — levitation video loop. Phase 2 — cross-fade to still + new headline. */
+  .c4{height:280vh;position:relative}
+  .c4 .sticky{position:sticky;top:0;height:100vh;overflow:hidden}
+  .c4 .layer{position:absolute;inset:0;transition:none}
+  .c4 .layer video,.c4 .layer img{width:100%;height:100%;object-fit:cover;object-position:right center}
+  .c4 .layer::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,var(--bg) 8%,rgba(5,8,15,.6) 45%,rgba(5,8,15,.1) 100%)}
+  .c4 .l-still::after{background:linear-gradient(90deg,var(--bg) 8%,rgba(5,8,15,.55) 50%,rgba(5,8,15,.1) 100%)}
+  .c4 .copy{position:absolute;inset:0;display:flex;align-items:center;z-index:5}
+  .c4 .copy .wrap{width:100%}
+  .c4 .phase{position:absolute;max-width:560px;transition:opacity .4s,transform .4s}
+  .c4 h1{font-size:clamp(44px,8vw,104px)}
+  .c4 h1 .stroke{color:transparent;-webkit-text-stroke:2px var(--blue);text-shadow:0 0 34px rgba(31,162,255,.55)}
+  .c4 h1 .stroke-r{color:transparent;-webkit-text-stroke:2px var(--red);text-shadow:0 0 34px rgba(232,68,58,.55)}
+  .c4 .sub{margin-top:20px;color:#c5d4f0;font-size:clamp(16px,2vw,20px)}
+  .scroll-hint{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);color:var(--muted);
+    font-size:12px;letter-spacing:3px;z-index:20;animation:bob 1.6s ease-in-out infinite}
+  .after{padding:120px 0;text-align:center}
+</style>
+</head>
+<body>
+  <div class="bg-fx"><div class="speed" id="speed"></div></div>
+
+  <header>
+    <div class="bar">
+      <div class="logo">ПИЛ<span class="o">О</span>Т <span style="font-size:11px;letter-spacing:2px;color:var(--muted);font-style:normal">/ КОНЦЕПТ 4</span></div>
+      <nav>
+        <a href="index.html">B2C витрина</a>
+        <a href="b2b.html">B2B опт</a>
+      </nav>
+      <a href="index.html" class="btn btn-ghost">К лендингам</a>
+    </div>
+  </header>
+
+  <!-- HYBRID HERO -->
+  <section class="c4" id="c4">
+    <div class="sticky">
+      <!-- phase 1: video -->
+      <div class="layer l-video" id="lVideo">
+        <video autoplay muted loop playsinline poster="assets/hero-b.png">
+          <source src="assets/hero.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <!-- phase 2: still -->
+      <div class="layer l-still" id="lStill" style="opacity:0">
+        <img src="assets/hero-red.png" alt="" />
+      </div>
+
+      <div class="copy">
+        <div class="wrap" style="position:relative;min-height:280px">
+          <div class="phase" id="p1">
+            <span class="kicker">Профессиональная серия</span>
+            <h1 class="display">Чистое<br><span class="stroke">стекло</span></h1>
+            <p class="sub">На любой скорости. Летняя омывающая жидкость «ПИЛОТ».</p>
+          </div>
+          <div class="phase" id="p2" style="opacity:0;transform:translateY(30px)">
+            <span class="kicker" style="color:var(--red)">Антимошка-формула</span>
+            <h1 class="display">Смывает<br><span class="stroke-r">всё</span></h1>
+            <p class="sub">Даже засохших мошек — без разводов и плёнки. 5 литров.</p>
+            <div style="margin-top:28px"><a href="index.html" class="btn btn-primary">Смотреть продукт</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="scroll-hint" id="hint">▼ СКРОЛЛ — СМЕНА КАДРА</div>
+
+  <section class="after">
+    <div class="wrap">
+      <span class="kicker">Концепт 4 · гибрид</span>
+      <h2 class="sec display">Видео + смена кадра по скроллу</h2>
+      <p class="lead" style="margin:18px auto 30px">Первый экран живёт видео-петлёй, по скроллу кросс-фейдом перетекает во второй кадр с новым посылом. Дальше — обычные секции лендинга.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a href="index.html" class="btn btn-primary">Концепт на B2C</a>
+        <a href="b2b.html" class="btn btn-ghost">Концепт на B2B</a>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="wrap cols"><div><div class="logo">ПИЛ<span class="o">О</span>Т</div></div>
+    <div><span style="opacity:.6">© Пилотмаркет · демо концепта 4</span></div></div></footer>
+  <p class="proto-note">Концепт 4 (гибрид): scroll-driven hero. Ассеты — Higgsfield. Болид для интро догенерируем, когда сервис восстановится.</p>
+
+  <script>
+    const speed=document.getElementById('speed');
+    for(let i=0;i<12;i++){const s=document.createElement('span');s.style.top=(Math.random()*100)+'%';
+      s.style.left=(Math.random()*60)+'%';s.style.animationDelay=(Math.random()*3)+'s';
+      s.style.animationDuration=(2+Math.random()*2.5)+'s';speed.appendChild(s);}
+
+    const c4=document.getElementById('c4'),lVideo=document.getElementById('lVideo'),
+      lStill=document.getElementById('lStill'),p1=document.getElementById('p1'),
+      p2=document.getElementById('p2'),hint=document.getElementById('hint');
+    function onScroll(){
+      const r=c4.getBoundingClientRect();
+      const total=c4.offsetHeight-window.innerHeight;
+      let p=Math.min(1,Math.max(0,-r.top/total));   // 0..1 progress through section
+      // cross-fade media around 35%-65%
+      const t=Math.min(1,Math.max(0,(p-0.35)/0.3));
+      lStill.style.opacity=t;
+      lVideo.style.transform='scale('+(1+p*0.06)+')';
+      lStill.style.transform='scale('+(1.06-p*0.04)+')';
+      // headline swap at midpoint
+      const showP2=p>0.5;
+      p1.style.opacity=showP2?0:1; p1.style.transform=showP2?'translateY(-30px)':'none';
+      p2.style.opacity=showP2?1:0; p2.style.transform=showP2?'none':'translateY(30px)';
+      hint.style.opacity=p>0.85?0:1;
+    }
+    document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  </script>
+</body>
+</html>
