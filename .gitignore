@@ -5,5 +5,6 @@ assets/image 2.png
 assets/image 3.png
 assets/emblem.png
 assets/logo-wordmark.png
-assets/_cut.py
+assets/_*.py
+assets/*-zoom.png
 assets/ChatGPT Image*
