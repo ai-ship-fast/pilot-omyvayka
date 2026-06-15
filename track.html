@@ -2,118 +2,14 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ПИЛОТ — омывающая жидкость 5 л (трек)</title>
-<link rel="stylesheet" href="css/style.css" />
-<style>
-  /* track variant specifics: standing bottle + reflection + light parallax */
-  .track-bg::after{background:linear-gradient(90deg,rgba(5,8,15,.9) 4%,rgba(5,8,15,.5) 40%,rgba(5,8,15,.05) 100%)}
-  .bottle-wrap{position:absolute;right:7vw;bottom:0;z-index:1;height:96vh;max-height:1040px;
-    display:flex;flex-direction:column;align-items:center;will-change:transform}
-  .bottle-wrap img.main{height:78%;filter:drop-shadow(0 18px 30px rgba(0,0,0,.7)) drop-shadow(0 0 60px rgba(31,162,255,.25))}
-  .bottle-wrap img.refl{height:78%;transform:scaleY(-1);margin-top:-2px;opacity:.28;
-    -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.7),transparent 55%);
-    mask-image:linear-gradient(to bottom,rgba(0,0,0,.7),transparent 55%)}
-  @media(max-width:820px){.bottle-wrap{right:-2vw;height:64vh;opacity:.9}}
-</style>
+<meta http-equiv="refresh" content="0; url=./" />
+<link rel="canonical" href="https://ai-ship-fast.github.io/pilot-omyvayka/" />
+<title>ПИЛОТ — летняя омывающая жидкость 5 л</title>
+<script>location.replace('./');</script>
 </head>
 <body>
-  <header>
-    <div class="bar">
-      <div></div>
-      <nav>
-        <a href="#product">Продукт</a>
-        <a href="#specs">Характеристики</a>
-        <a href="#buy">Где купить</a>
-        <a href="studio.html" class="nav-tag">ВАРИАНТ «СТУДИЯ»</a>
-      </nav>
-      <a href="#buy" class="btn btn-primary">Где купить</a>
-    </div>
-  </header>
-
-  <!-- PRODUCT HERO: bottle standing on wet track -->
-  <section class="phero">
-    <div class="phero-bg track-bg" id="bg" style="background-image:url('assets/asphalt.png')"></div>
-    <div class="wrap">
-      <span class="kicker">Профессиональная серия · Лето</span>
-      <h1 class="display">Держи<br><span class="stroke">дистанцию</span><br>чистой</h1>
-      <p class="sub">Летняя омывающая жидкость «ПИЛОТ», 5 литров. Чистое стекло на любой скорости.</p>
-      <div class="actions">
-        <a href="#buy" class="btn btn-primary">Где купить</a>
-        <a href="#product" class="btn btn-ghost">О продукте</a>
-      </div>
-    </div>
-    <div class="bottle-wrap" id="bottle">
-      <img class="main" src="assets/bottle-clean.png" alt="Бутылка ПИЛОТ 5 л" />
-      <img class="refl" src="assets/bottle-clean.png" alt="" aria-hidden="true" />
-    </div>
-    <div class="cue">▼ СКРОЛЛ</div>
-  </section>
-
-  <!-- PRODUCT -->
-  <section class="block" id="product">
-    <div class="wrap split">
-      <div class="reveal" style="text-align:center">
-        <img src="assets/bottle-clean.png" alt="Бутылка ПИЛОТ 5 л" style="height:560px;max-width:100%;filter:drop-shadow(0 20px 40px rgba(0,0,0,.6)) drop-shadow(0 0 50px rgba(31,162,255,.2))" />
-      </div>
-      <div class="reveal">
-        <span class="kicker">Продукт</span>
-        <h2 class="sec display">Готова<br>к старту</h2>
-        <p class="lead" style="margin-top:18px">Удобная ПЭТ-бутыль 5 л с ручкой. Профессиональная формула: отмывает засохших мошек и дорожную плёнку без разводов и масляной плёнки.</p>
-        <div style="margin-top:30px">
-          <div class="frow"><div class="num">01</div><div><h3>Для стёкол</h3><p>Кристальная прозрачность лобового и боковых стёкол.</p></div></div>
-          <div class="frow"><div class="num">02</div><div><h3>Без разводов</h3><p>Чистый обзор сразу после прохода дворников.</p></div></div>
-          <div class="frow"><div class="num">03</div><div><h3>Антимошка-формула</h3><p>Смывает следы насекомых без многократных проходов.</p></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SPECS -->
-  <section class="block" id="specs" style="padding-top:0">
-    <div class="wrap">
-      <div class="specs reveal">
-        <div class="spec"><div class="v">5<small> л</small></div><div class="l">Объём бутыли</div></div>
-        <div class="spec"><div class="v">0<small> °C</small></div><div class="l">Рабочая температура</div></div>
-        <div class="spec"><div class="v">∞</div><div class="l">Без разводов</div></div>
-        <div class="spec"><div class="v">1</div><div class="l">Проход дворника</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="block" id="buy" style="padding-top:0">
-    <div class="wrap">
-      <div class="cta-band reveal">
-        <h2 class="display">Залей «ПИЛОТ»</h2>
-        <p>Спрашивайте летнюю омывающую жидкость «ПИЛОТ» в магазинах сети и на маркетплейсах.</p>
-        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-          <a href="#" class="btn btn-primary">Магазины «Пилот»</a>
-          <a href="#" class="btn btn-ghost">Wildberries / Ozon</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="wrap cols">
-      <div>
-        <img class="logo-img" src="assets/logo-wordmark-t.png" alt="ПИЛОТМАРКЕТ" style="height:26px" />
-        <p style="margin-top:12px">Летняя омывающая жидкость · 5 л · бренд сети «Пилот»</p>
-      </div>
-      <div><a href="studio.html">Вариант «Студия» →</a><br><span style="opacity:.6">© Пилотмаркет</span></div>
-    </div>
-  </footer>
-  <p class="proto-note">Статичный пример «Трек». Реальный продукт (бутылка с этикеткой) на фоне asphalt.png с отражением. Без видео — лёгкий параллакс при скролле.</p>
-
-  <script>
-    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.18});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-    // light parallax: bg drifts slower, bottle slightly faster
-    const bg=document.getElementById('bg'),bottle=document.getElementById('bottle');
-    addEventListener('scroll',()=>{const y=scrollY;if(y<window.innerHeight){
-      bg.style.transform='translateY('+(y*0.15)+'px)';
-      bottle.style.transform='translateY('+(y*-0.06)+'px)';}},{passive:true});
-  </script>
+<p style="font-family:sans-serif;background:#05080f;color:#eef4ff;margin:0;padding:40px;text-align:center">
+  Страница переехала на <a href="./" style="color:#1fa2ff">главную</a>…
+</p>
 </body>
 </html>
