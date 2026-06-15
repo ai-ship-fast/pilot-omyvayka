@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ПИЛОТ — омывающая жидкость 5 л (студия)</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="bar">
+      <div class="logo-lockup"><img class="em" src="assets/emblem-t.png" alt="" /><img class="logo-img" src="assets/logo-wordmark-t.png" alt="ПИЛОТМАРКЕТ" /></div>
+      <nav>
+        <a href="#product">Продукт</a>
+        <a href="#specs">Характеристики</a>
+        <a href="#buy">Где купить</a>
+        <a href="track.html" class="nav-tag">ВАРИАНТ «ТРЕК»</a>
+      </nav>
+      <a href="#buy" class="btn btn-primary">Где купить</a>
+    </div>
+  </header>
+
+  <!-- PRODUCT HERO: canister over studio bg -->
+  <section class="phero">
+    <div class="phero-bg" style="background-image:url('assets/studio.png')"></div>
+    <div class="wrap">
+      <span class="kicker">Профессиональная серия · Лето</span>
+      <h1 class="display">Чистое<br><span class="stroke">стекло</span></h1>
+      <p class="sub">Летняя омывающая жидкость «ПИЛОТ». Отмывает даже засохших мошек — без разводов.</p>
+      <div class="actions">
+        <a href="#buy" class="btn btn-primary">Где купить</a>
+        <a href="#product" class="btn btn-ghost">О продукте</a>
+      </div>
+    </div>
+    <img class="product-shot" src="assets/canister-cut.png" alt="Канистра ПИЛОТ 5 л" />
+    <div class="cue">▼ СКРОЛЛ</div>
+  </section>
+
+  <!-- PRODUCT -->
+  <section class="block" id="product">
+    <div class="wrap split">
+      <div class="reveal">
+        <span class="kicker">Продукт</span>
+        <h2 class="sec display">Создана<br>для скорости</h2>
+        <p class="lead" style="margin-top:18px">Концентрированная формула профессионального уровня. Мгновенно растворяет следы насекомых и дорожную плёнку — обзор остаётся кристально чистым даже на трассе.</p>
+        <div style="margin-top:30px">
+          <div class="frow"><div class="num">01</div><div><h3>Для стёкол</h3><p>Идеальная прозрачность лобового и боковых стёкол в любую погоду.</p></div></div>
+          <div class="frow"><div class="num">02</div><div><h3>Без разводов</h3><p>Не оставляет масляной плёнки и следов — чистый обзор сразу.</p></div></div>
+          <div class="frow"><div class="num">03</div><div><h3>Антимошка-формула</h3><p>Размягчает и смывает засохших насекомых без многократных проходов.</p></div></div>
+        </div>
+      </div>
+      <div class="reveal" style="text-align:center">
+        <img src="assets/canister-cut.png" alt="Канистра ПИЛОТ 5 л" style="height:560px;max-width:100%;filter:drop-shadow(0 20px 40px rgba(0,0,0,.6)) drop-shadow(0 0 50px rgba(31,162,255,.2))" />
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECS -->
+  <section class="block" id="specs" style="padding-top:0">
+    <div class="wrap">
+      <div class="specs reveal">
+        <div class="spec"><div class="v">5<small> л</small></div><div class="l">Объём канистры</div></div>
+        <div class="spec"><div class="v">0<small> °C</small></div><div class="l">Рабочая температура</div></div>
+        <div class="spec"><div class="v">∞</div><div class="l">Без разводов</div></div>
+        <div class="spec"><div class="v">1</div><div class="l">Проход дворника</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="block" id="buy" style="padding-top:0">
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <h2 class="display">Залей «ПИЛОТ»</h2>
+        <p>Спрашивайте летнюю омывающую жидкость «ПИЛОТ» в магазинах сети и на маркетплейсах.</p>
+        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+          <a href="#" class="btn btn-primary">Магазины «Пилот»</a>
+          <a href="#" class="btn btn-ghost">Wildberries / Ozon</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap cols">
+      <div>
+        <img class="logo-img" src="assets/logo-wordmark-t.png" alt="ПИЛОТМАРКЕТ" style="height:26px" />
+        <p style="margin-top:12px">Летняя омывающая жидкость · 5 л · бренд сети «Пилот»</p>
+      </div>
+      <div><a href="track.html">Вариант «Трек» →</a><br><span style="opacity:.6">© Пилотмаркет</span></div>
+    </div>
+  </footer>
+  <p class="proto-note">Статичный пример «Студия». Реальный продукт (канистра с этикеткой) на фоне studio.png. Без видео — только лёгкое CSS-парение.</p>
+
+  <script>
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.18});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
