@@ -153,10 +153,10 @@
     // ---- Yandex Map (v3, тёмная тема). Вставить ключ в YMAP_KEY, чтобы включить. ----
     const YMAP_KEY=''; // <-- сюда API-ключ Яндекс.Карт (JS API v3 + Геокодер)
     const STORE_ADDRESSES=[
-      'Сочи, ул. Бориса Голицына, 1',
-      'Сочи, ул. Шоссейная, 89',
-      'Сочи, Сухумское шоссе, 110А',
-      'Сочи, ул. Волгоградская, 105'
+      'Новороссийск, ул. Бориса Голицына, 1',
+      'Новороссийск, ул. Шоссейная, 89',
+      'Новороссийск, Сухумское шоссе, 110А',
+      'Новороссийск, ул. Волгоградская, 105'
     ];
     if(YMAP_KEY){
       document.getElementById('mapwrap').style.display='block';
@@ -168,7 +168,7 @@
       await ymaps3.ready;
       const {YMap,YMapDefaultSchemeLayer,YMapDefaultFeaturesLayer,YMapMarker,YMapControls}=ymaps3;
       const map=new YMap(document.getElementById('map'),
-        {location:{center:[39.72,43.60],zoom:11},theme:'dark'});
+        {location:{center:[37.77,44.72],zoom:12},theme:'dark'});
       map.addChild(new YMapDefaultSchemeLayer());
       map.addChild(new YMapDefaultFeaturesLayer());
       const pts=[];
