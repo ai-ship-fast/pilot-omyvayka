@@ -73,7 +73,7 @@ header nav a:hover{color:var(--blue)}
 @keyframes dash{from{transform:translateX(-60%)}to{transform:translateX(170%)}}
 
 /* ---------- HERO (concept 1: levitating canister) ---------- */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:84px;box-sizing:border-box}
 .hero-media{position:absolute;inset:0;z-index:-1}
 .hero-media video,.hero-media img{width:100%;height:100%;object-fit:cover;object-position:right center}
 .hero-media::after{content:"";position:absolute;inset:0;
@@ -164,7 +164,7 @@ footer a:hover{color:var(--blue)}
 .reveal.in{opacity:1;transform:none}
 
 /* ---------- product hero (real cutout over photo bg, no video) ---------- */
-.phero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.phero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:84px;box-sizing:border-box}
 .phero-bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center}
 .phero-bg::after{content:"";position:absolute;inset:0;
   background:linear-gradient(90deg,rgba(5,8,15,.92) 6%,rgba(5,8,15,.55) 42%,rgba(5,8,15,.12) 100%)}
