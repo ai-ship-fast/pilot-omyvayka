@@ -150,43 +150,28 @@
       bg.style.transform='translateY('+(y*0.15)+'px)';
       bottle.style.transform='translateY('+(y*-0.06)+'px)';}},{passive:true});
 
-    // ---- Yandex Map (v3, тёмная тема). Вставить ключ в YMAP_KEY, чтобы включить. ----
-    const YMAP_KEY='785fca51-4ab6-4982-ba7c-7166d1317ca8'; // API-ключ Яндекс.Карт (JS API v3 + Геокодер)
-    const STORE_ADDRESSES=[
-      'Новороссийск, ул. Бориса Голицына, 1',
-      'Новороссийск, ул. Шоссейная, 89',
-      'Новороссийск, Сухумское шоссе, 110А',
-      'Новороссийск, ул. Волгоградская, 105'
+    // ---- 2ГИС MapGL (бесплатно). Вставить ключ в TGIS_KEY, чтобы включить. ----
+    const TGIS_KEY=''; // <-- сюда бесплатный ключ 2ГИС MapGL (dev.2gis.com)
+    const STORES=[
+      {n:'ул. Волгоградская, 105',      c:[37.770853, 44.684863]},
+      {n:'Сухумское шоссе, 110А',       c:[37.836359, 44.719534]},
+      {n:'ул. Шоссейная, 89',           c:[37.758273, 44.681938]},
+      {n:'ул. Бориса Голицына, 1',      c:[37.772000, 44.690000]} // приблизительно — уточнить
     ];
-    if(YMAP_KEY){
+    if(TGIS_KEY){
       document.getElementById('mapwrap').style.display='block';
       const s=document.createElement('script');
-      s.src='https://api-maps.yandex.ru/v3/?apikey='+YMAP_KEY+'&lang=ru_RU';
-      s.onload=initYMap; document.head.appendChild(s);
+      s.src='https://mapgl.2gis.com/api/js/v1';
+      s.onload=initTGIS; document.head.appendChild(s);
     }
-    async function initYMap(){
-      await ymaps3.ready;
-      const {YMap,YMapDefaultSchemeLayer,YMapDefaultFeaturesLayer,YMapMarker,YMapControls}=ymaps3;
-      const map=new YMap(document.getElementById('map'),
-        {location:{center:[37.77,44.72],zoom:12},theme:'dark'});
-      map.addChild(new YMapDefaultSchemeLayer());
-      map.addChild(new YMapDefaultFeaturesLayer());
-      const pts=[];
-      for(const addr of STORE_ADDRESSES){
-        try{
-          const res=await ymaps3.search({text:addr});
-          if(res&&res[0]&&res[0].geometry){
-            const c=res[0].geometry.coordinates;pts.push(c);
-            const el=document.createElement('div');el.className='ymark';el.title=addr;
-            map.addChild(new YMapMarker({coordinates:c},el));
-          }
-        }catch(e){console.warn('geocode failed',addr,e);}
-      }
-      if(pts.length){
-        const lons=pts.map(p=>p[0]),lats=pts.map(p=>p[1]);
-        map.update({location:{center:[(Math.min(...lons)+Math.max(...lons))/2,
-          (Math.min(...lats)+Math.max(...lats))/2],zoom:11}});
-      }
+    function initTGIS(){
+      const lons=STORES.map(s=>s.c[0]),lats=STORES.map(s=>s.c[1]);
+      const center=[(Math.min(...lons)+Math.max(...lons))/2,(Math.min(...lats)+Math.max(...lats))/2];
+      const map=new mapgl.Map('map',{key:TGIS_KEY,center,zoom:11.2});
+      STORES.forEach(st=>{
+        new mapgl.HtmlMarker(map,{coordinates:st.c,anchor:[8,8],
+          html:'<div class="tgmark" title="Пилот Маркет, '+st.n+'"></div>'});
+      });
     }
   </script>
 </body>
