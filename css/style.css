@@ -189,8 +189,16 @@ footer a:hover{color:var(--blue)}
   background:linear-gradient(transparent,rgba(170,205,255,.5));animation:rainfall linear infinite}
 @keyframes rainfall{to{transform:translateY(950%)}}
 
+/* where-to-buy contacts (phones) */
+.contacts{display:flex;gap:16px;flex-wrap:wrap;margin-top:26px}
+.contact{display:flex;flex-direction:column;gap:3px;background:linear-gradient(160deg,var(--bg2),rgba(11,99,229,.06));
+  border:1px solid var(--line);border-radius:14px;padding:16px 24px;transition:.2s}
+.contact:hover{border-color:rgba(31,162,255,.45)}
+.contact .num{font-size:23px;font-weight:900;font-style:italic;color:var(--white);letter-spacing:.5px}
+.contact .cl{color:var(--muted);font-size:13px}
+
 /* where-to-buy stores */
-.stores{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:28px 0}
+.stores{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:24px 0 28px}
 .store{background:linear-gradient(160deg,var(--bg2),rgba(11,99,229,.05));border:1px solid var(--line);
   border-radius:14px;padding:20px 22px}
 .store h4{font-size:16px;font-weight:800}
