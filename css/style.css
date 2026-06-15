@@ -182,3 +182,32 @@ footer a:hover{color:var(--blue)}
 .product-shot.center{animation:floaty-c 5.5s ease-in-out infinite}
 @keyframes floaty-c{0%,100%{transform:translateX(50%) translateY(0)}50%{transform:translateX(50%) translateY(-16px)}}
 @media(max-width:820px){.product-shot{height:60vh;right:-4vw;opacity:.85}}
+
+/* ---------- mobile ---------- */
+@media(max-width:720px){
+  header .bar{padding:12px 6vw}
+  h2.sec{font-size:clamp(28px,8vw,40px)}
+  .cue{display:none}
+
+  /* video hero (index/b2b): product lives inside the video — show it up top, text bottom */
+  .hero{align-items:flex-end;padding-bottom:7vh}
+  .hero-media video,.hero-media img{object-position:62% center}
+  .hero-media::after{background:linear-gradient(to top,var(--bg) 16%,rgba(5,8,15,.45) 52%,rgba(5,8,15,.18) 100%)}
+  .hero .vol-badge{display:none}
+  .hero .sub,.phero .sub{max-width:none}
+
+  /* product hero (studio/track): stack product above the text */
+  .phero{flex-direction:column;justify-content:flex-end;padding-bottom:6vh}
+  .phero .wrap{order:2}
+  .phero-bg::after{background:linear-gradient(to top,var(--bg) 14%,rgba(5,8,15,.5) 58%,rgba(5,8,15,.18) 100%)}
+  .product-shot{position:relative;order:1;right:auto;bottom:auto;height:38vh;max-height:none;
+    margin:0 auto 14px;transform:none;animation:floaty 5.5s ease-in-out infinite}
+  .product-shot.center{right:auto;transform:none;animation:floaty 5.5s ease-in-out infinite}
+  .bottle-wrap{position:relative;order:1;right:auto;height:auto;margin:0 auto 14px}
+  .bottle-wrap img.main{height:36vh}
+  .bottle-wrap img.refl{display:none}
+
+  /* concept4 hero */
+  .c4 .layer video,.c4 .layer img{object-position:60% center}
+  .c4 .phase{max-width:none}
+}
